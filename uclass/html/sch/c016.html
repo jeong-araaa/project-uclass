@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">정기일정 등록</h1>
+      <div class="app-header__more">
+        <button type="button" class="btn btn--more" aria-label="더보기"></button>
+        <div class="more">
+          <ul class="more-list">
+            <li><a href="javascript:;" class="btn-load" data-modal-open="modal-load">불러오기</a></li>
+            <li><a href="javascript:;" class="btn-delete" data-modal-open="modal-delete">삭제</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-sub">
+      <div class="app-sub__inner">
+        <div class="tab">
+          <ul class="tab-list">
+            <li class="is-active"><a href="javascript:;">7월</a></li>
+            <li><a href="javascript:;">8월</a></li>
+          </ul>
+        </div>
+        <section class="sch tab-content is-active">
+          <ul class="sch-list">
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">월요일</span>
+                <span class="sch-desc">지각, 학원관련, 출석 11:11</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">화요일</span>
+                <span class="sch-desc">결석, 학원관련</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">수요일</span>
+                <span class="sch-desc">조퇴, 학원관련, 조퇴 11:11</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">목요일</span>
+                <span class="sch-desc">외출, 학원관련, 외출 11:11, 복귀 11:11</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">금요일</span>
+                <span class="sch-desc">결석, 학원관련</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">토요일</span>
+                <span class="sch-desc">조퇴, 학원관련, 조퇴 11:11</span>
+              </a>
+            </li>
+          </ul>
+          <div class="app-noti">
+            <div class="noti-item noti--admin">관리자 대기중</div>
+            <div class="noti-item noti--parent">학부모 대기중</div>
+          </div>
+        </section><!-- //sch -->
+        <section class="sch tab-content">
+          <ul class="sch-list">
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">월요일</span>
+                <span class="sch-desc">지각, 학원관련, 출석 11:11</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">화요일</span>
+                <span class="sch-desc">결석, 학원관련</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">수요일</span>
+                <span class="sch-desc">조퇴, 학원관련, 조퇴 11:11</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">목요일</span>
+                <span class="sch-desc">외출, 학원관련, 외출 11:11, 복귀 11:11</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">금요일</span>
+                <span class="sch-desc">결석, 학원관련</span>
+              </a>
+            </li>
+            <li class="is-completed is-disabled">
+              <a href="c014.html">
+                <span class="sch-title">토요일</span>
+                <span class="sch-desc">조퇴, 학원관련, 조퇴 11:11</span>
+              </a>
+            </li>
+          </ul>
+          <div class="app-noti">
+            <div class="noti-item noti--admin is-active">관리자 완료</div>
+            <div class="noti-item noti--parent is-active">학부모 완료</div>
+          </div>
+        </section><!-- //sch -->
+      </div>
+    </main><!-- //app-sub -->
+
+    <!-- 모달창 -->
+    <div class="modal modal--detail" id="modal-load">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="modal__body">
+          <h2 class="view__title">불러오기</h2>
+          <p class="modal__desc">
+            전월 승인 완료된 정기일정을 불러옵니다.<br>
+            <br>
+            현재 등록 또는 승인 되어있는<br>
+            정기일정은 삭제됩니다.
+          </p>
+        </div>
+        <div class="modal__btn">
+          <button type="button" class="btnForm">불러오기</button>
+        </div>
+      </div>
+    </div><!-- //modal-->
+    <div class="modal modal--detail" id="modal-delete">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="modal__body">
+          <h2 class="view__title">정기일정 삭제</h2>
+          <p class="modal__desc">
+            현재 등록 및 승인 되어있는<br>
+            정기일정은 삭제됩니다.<br>
+            <br>
+            승인일정 삭제 시 출결에 반영되지 않습니다.
+          </p>
+        </div>
+        <div class="modal__btn">
+          <button type="button" class="btnLine" data-modal-close>취소</button>
+          <button type="button" class="btnForm" data-modal-close>삭제</button>
+        </div>
+      </div>
+    </div><!-- //modal-->
+  </div>
+  
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+  <script type="text/javascript" src="../../assets/js/modal.js"></script>
+  <script>
+    // 드롭다운 열림 상태 전부 닫기
+    function closeAll(exceptMenu = null) {
+      document.querySelectorAll('.app-header__more .more.is-open').forEach(menu => {
+        if (menu !== exceptMenu) {
+          menu.classList.remove('is-open');
+          const btn = menu.previousElementSibling?.matches('.btn--more')
+            ? menu.previousElementSibling
+            : menu.closest('.app-header__more')?.querySelector('.btn--more');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // 버튼 클릭 → 해당 more 토글
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.btn--more');
+      if (btn) {
+        const wrap = btn.closest('.app-header__more');
+        const menu = wrap?.querySelector('.more');
+        if (!menu) return;
+
+        const willOpen = !menu.classList.contains('is-open');
+        closeAll(); // 다른 메뉴는 닫기
+        if (willOpen) {
+          menu.classList.add('is-open');
+          btn.setAttribute('aria-expanded', 'true');
+          // 첫 포커스 타겟(옵션)
+          const first = menu.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+          if (first) first.focus({ preventScroll: true });
+        } else {
+          menu.classList.remove('is-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+        return; // 아래 바깥 클릭 로직으로 떨어지지 않게
+      }
+
+      // 메뉴 내부 a 클릭 시 닫기
+      const linkInsideMenu = e.target.closest('.more a, .more button');
+      if (linkInsideMenu) {
+        const menu = linkInsideMenu.closest('.more');
+        const btn = menu?.closest('.app-header__more')?.querySelector('.btn--more')
+                || menu?.previousElementSibling;
+        menu?.classList.remove('is-open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        return;
+      }
+
+      // 바깥 클릭 → 전부 닫기
+      const clickedInsideWrapper = e.target.closest('.app-header__more');
+      if (!clickedInsideWrapper) {
+        closeAll();
+      }
+
+      // .sch-list 안의 a 클릭 시 이동 방지
+      const link = e.target.closest('.sch-list a');
+      if (link) {
+        e.preventDefault();
+      }
+    });
+
+
+    // 탭메뉴
+    const tabList = document.querySelectorAll('.tab-list li');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabList.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        // 탭 활성화 표시
+        tabList.forEach(t => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+
+        // 콘텐츠 표시
+        tabContents.forEach(con => con.classList.remove('is-active'));
+        tabContents[i].classList.add('is-active');
+      });
+    });
+  </script>
+</body>
+</html>

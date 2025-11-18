@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">추가정보 입력</h1>
+    </header>
+
+    <main class="app-sub">
+      <div class="app-sub__inner">
+        <form id="joinForm" class="form join">
+          <!-- 가입유형 -->
+          <fieldset class="join__types" aria-label="가입유형 선택">
+            <legend class="types-title">가입유형 선택</legend>
+            <div class="chip__inner">
+              <label class="chip chip--student">
+                <input class="chip__input" type="radio" name="joinType" value="student" checked>
+                <span class="chip__label">고등학생</span>
+              </label>
+              <label class="chip chip--repeat">
+                <input class="chip__input" type="radio" name="joinType" value="repeat">
+                <span class="chip__label">N수생</span>
+              </label>
+              <label class="chip chip--parent">
+                <input class="chip__input" type="radio" name="joinType" value="parent">
+                <span class="chip__label">학부모</span>
+              </label>
+            </div>
+          </fieldset>
+          <section class="join__formset" data-type="student">
+            <div class="form-body">
+              <div class="form-row">
+                <label for="s_branch" class="lbl">지점선택</label>
+                <button type="button" class="btn-select" data-modal-open="modal-branch_1">지점선택</button> <!-- 251023 추가&수정 -->
+                <input type="hidden" class="int" id="s_branch" disabled>
+              </div>
+              <!-- 251023 추가&수정 -->
+              <div class="form-row is-error">
+                <label for="s_branch" class="lbl">지점선택</label>
+                <button type="button" class="btn-select" data-modal-open="modal-branch_1">지점선택</button>
+                <input type="hidden" class="int" id="s_branch" disabled>
+                <p class="text-message">에러 도움말 내용입니다.</p>
+              </div>
+              <div class="form-row">
+                <label for="s_name" class="lbl">이름</label>
+                <input type="text" class="int" id="s_name" placeholder="이름">
+              </div>
+              <div class="form-row is-error">
+                <label for="s_name" class="lbl">이름</label>
+                <input type="text" class="int" id="s_name" placeholder="이름">
+                <p class="text-message">에러 도움말 내용입니다.</p>
+              </div>
+              <div class="form-row">
+                <label for="s_phone" class="lbl">연락처</label>
+                <input type="tel" class="int" id="s_phone" placeholder="연락처">
+              </div>
+              <div class="form-row is-error">
+                <label for="s_phone" class="lbl">연락처</label>
+                <input type="tel" class="int" id="s_phone" placeholder="연락처">
+                <p class="text-message">에러 도움말 내용입니다.</p>
+              </div>
+              <!-- //251023 추가&수정 -->
+              <div class="form-row last">
+                <div class="terms-item">
+                  <input class="terms-item__input" type="checkbox" id="s_agree_tos" required>
+                  <label class="terms-item__label" for="s_agree_tos">
+                    <span class="terms-item__badge"><span class="terms-item__check" aria-hidden="true"></span> 동의</span>
+                  </label>
+                  <a href="c004.html" class="terms-item__title">이용약관 (필수)</a>
+                </div>
+                <div class="terms-item">
+                  <input class="terms-item__input" type="checkbox" id="s_agree_privacy" required>
+                  <label class="terms-item__label" for="s_agree_privacy">
+                    <span class="terms-item__badge"><span class="terms-item__check" aria-hidden="true"></span> 동의</span>
+                  </label>
+                  <a href="c004.html" class="terms-item__title">개인정보취급방침 (필수)</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="join__formset" data-type="repeat">
+            <div class="form-body">
+              <div class="form-row">
+                <label for="n_branch" class="lbl">지점선택</label>
+                <button type="button" class="btn-select" data-modal-open="modal-branch_2">지점선택</button> <!-- 251023 추가&수정 -->
+                <input type="hidden" class="int" id="n_branch" disabled>
+              </div>
+              <div class="form-row">
+                <label for="n_name" class="lbl">이름</label>
+                <input type="text" class="int" id="n_name" placeholder="이름">
+              </div>
+              <div class="form-row">
+                <label for="n_phone" class="lbl">연락처</label>
+                <input type="tel" class="int" id="n_phone" placeholder="연락처">
+              </div>
+              <div class="form-row last">
+                <div class="terms-item">
+                  <input class="terms-item__input" type="checkbox" id="n_agree_tos" required>
+                  <label class="terms-item__label" for="n_agree_tos">
+                    <span class="terms-item__badge"><span class="terms-item__check" aria-hidden="true"></span> 동의</span>
+                  </label>
+                  <a href="c004.html" class="terms-item__title">이용약관 (필수)</a>
+                </div>
+                <div class="terms-item">
+                  <input class="terms-item__input" type="checkbox" id="n_agree_privacy" required>
+                  <label class="terms-item__label" for="n_agree_privacy">
+                    <span class="terms-item__badge"><span class="terms-item__check" aria-hidden="true"></span> 동의</span>
+                  </label>
+                  <a href="c004.html" class="terms-item__title">개인정보취급방침 (필수)</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="join__formset" data-type="parent" hidden>
+            <div class="form-body">
+              <div class="form-row">
+                <label for="p_branch" class="lbl">지점선택</label>
+                <button type="button" class="btn-select" data-modal-open="modal-branch_3">지점선택</button> <!-- 251023 추가&수정 -->
+                <input type="hidden" class="int" id="p_branch" disabled>
+              </div>
+              <div class="form-row">
+                <label for="p_parents_name" class="lbl">학부모 이름</label>
+                <input type="text" class="int" id="p_parents_name" placeholder="학부모 이름">
+              </div>
+              <div class="form-row">
+                <label for="p_parents_tel" class="lbl">학부모 연락처</label>
+                <input type="tel" class="int" id="p_parents_tel" placeholder="학부모 연락처">
+              </div>
+              <div class="form-row">
+                <label for="p_student_name" class="lbl">학생 이름</label>
+                <input type="text" class="int" id="p_student_name" placeholder="학생 이름">
+              </div>
+              <div class="form-row">
+                <label for="p_student_tel" class="lbl">학생 연락처</label>
+                <input type="tel" class="int" id="p_student_tel" placeholder="학생 연락처">
+              </div>
+              <div class="form-row last">
+                <div class="terms-item">
+                  <input class="terms-item__input" type="checkbox" id="p_agree_tos" required>
+                  <label class="terms-item__label" for="p_agree_tos">
+                    <span class="terms-item__badge"><span class="terms-item__check" aria-hidden="true"></span> 동의</span>
+                  </label>
+                  <a href="c004.html" class="terms-item__title">이용약관 (필수)</a>
+                </div>
+                <div class="terms-item">
+                  <input class="terms-item__input" type="checkbox" id="p_agree_privacy" required>
+                  <label class="terms-item__label" for="p_agree_privacy">
+                    <span class="terms-item__badge"><span class="terms-item__check" aria-hidden="true"></span> 동의</span>
+                  </label>
+                  <a href="c004.html" class="terms-item__title">개인정보취급방침 (필수)</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="form-foot form-bottom">
+            <button type="submit" class="btnForm" id="nextBtn" disabled>다음</button>
+          </div>
+        </form>
+      </div>
+    </main><!-- //app-sub -->
+    
+    <!-- 251023 추가&수정 -->
+    <!-- 모달창 -->
+    <div class="modal modal--detail" id="modal-branch_1">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">지점선택</h2>
+          <ul class="select-list">
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+    <div class="modal modal--detail" id="modal-branch_2">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">지점선택</h2>
+          <ul class="select-list">
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+    <div class="modal modal--detail" id="modal-branch_3">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">지점선택</h2>
+          <ul class="select-list">
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장1호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+            <li>광장2호점</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+    <!-- //251023 추가&수정 -->
+  </div>
+
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+  <script type="text/javascript" src="../../assets/js/modal.js"></script>
+  <script type="text/javascript" src="../../assets/js/form.js"></script>
+  <script>
+    // 탭메뉴
+    const radios = document.querySelectorAll('input[name="joinType"]');
+    const formsets = document.querySelectorAll('.join__formset');
+    function toggleFormset(type) {
+      formsets.forEach(sec => {
+        const allowTypes = (sec.dataset.type || '').split(/\s+/);
+        const show = allowTypes.includes(type);
+        // 표시/숨김
+        sec.hidden = !show;
+        // 비활성화 처리 (숨겨진건 제출/검증 제외)
+        sec.querySelectorAll('input, select, textarea, button').forEach(el => {
+          if (show) {
+            el.removeAttribute('disabled');
+          } else {
+            el.setAttribute('disabled', '');
+          }
+        });
+      });
+    }
+    // 라디오 선택 이벤트
+    radios.forEach(radio => {
+      radio.addEventListener('change', e => {
+        toggleFormset(e.target.value);
+      });
+    });
+    // 초기 실행 (체크된 값 기준)
+    const checked = document.querySelector('input[name="joinType"]:checked');
+    if (checked) toggleFormset(checked.value);
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">사유 작성</h1>
+    </header>
+
+    <main class="app-sub">
+      <div class="app-sub__inner">
+        <form id="joinForm" class="form join">
+          <div class="form-body">
+            <div class="form-row has-value">
+              <label for="schedule" class="lbl">일정</label>
+              <select name="schedule" class="int" id="schedule">
+                <option value="오늘" selected>오늘</option>
+                <option value="내일">내일</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="attendance" class="lbl">출결종류</label>
+              <button type="button" class="btn-select" data-modal-open="modal-attendance">출결종류</button>
+              <input type="hidden" class="int" id="attendance">
+            </div>
+            <!-- 지각 -->
+            <div class="form-group" data-att-fields="지각" hidden>
+              <div class="form-row form-time">
+                <label for="time_ckin" class="lbl">입실 가능 시간</label>
+                <button type="button" class="btn-time" aria-label="시간 선택">입실 가능 시간</button>
+                <input type="time" class="int" id="time_ckin" placeholder="입실 가능 시간">
+              </div>
+            </div>
+            <!-- 결석 -->
+            <!-- <div class="form-group" data-att-fields="결석" hidden></div> -->
+            <!-- 조퇴 -->
+            <div class="form-group" data-att-fields="조퇴" hidden>
+              <div class="form-row form-time">
+                <label for="time_leave" class="lbl">조퇴시간</label>
+                <button type="button" class="btn-time" aria-label="시간 선택">조퇴시간</button>
+                <input type="time" class="int" id="time_leave" placeholder="조퇴시간">
+              </div>
+            </div>
+            <!-- 외출 -->
+            <div class="form-group" data-att-fields="외출" hidden>
+              <div class="form-row form-time">
+                <label for="time_out" class="lbl">외출시간</label>
+                <button type="button" class="btn-time" aria-label="시간 선택">외출시간</button>
+                <input type="time" class="int" id="time_out" placeholder="외출시간">
+              </div>
+              <div class="form-row form-time">
+                <label for="time_return" class="lbl">복귀시간</label>
+                <button type="button" class="btn-time" aria-label="시간 선택">복귀시간</button>
+                <input type="time" class="int" id="time_return" placeholder="복귀시간">
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="reason" class="lbl">사유</label>
+              <button type="button" class="btn-select" data-modal-open="modal-reason">사유</button>
+              <input type="hidden" id="reason">
+            </div>
+          </div>
+          <div class="form-foot form-bottom">
+            <button type="submit" class="btnForm" id="btnForm">승인 요청</button>
+          </div>
+        </form>
+      </div>
+    </main><!-- //app-sub -->
+    
+    <!-- 모달창 -->
+    <div class="modal modal--detail" id="modal-attendance">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">출결종류</h2>
+          <ul class="select-list">
+            <li data-att="지각">지각</li>
+            <li data-att="결석">결석</li>
+            <li data-att="조퇴">조퇴</li>
+            <li data-att="외출">외출</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+    <div class="modal modal--detail" id="modal-reason">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">사유</h2>
+          <ul class="select-list">
+            <li>학원관련</li>
+            <li>과외/스터디</li>
+            <li>운동</li>
+            <li>학교관련</li>
+            <li>병원/건강 관련</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+  </div>
+
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+  <script type="text/javascript" src="../../assets/js/modal.js"></script>
+  <script type="text/javascript" src="../../assets/js/form.js"></script>
+  <script>
+    // 시간
+    let autoIdSeq = 1;
+    document.querySelectorAll(".form-time").forEach(box => {
+      const label = box.querySelector("label.lbl");
+      const input = box.querySelector('input[type="time"]');
+      const btn   = box.querySelector(".btn-time");
+      if (!input || !btn || !label) return;
+
+      // id/for 매칭
+      const newId = `time-${autoIdSeq++}`;
+      input.id = newId;
+      label.setAttribute("for", newId);
+
+      // 기본 텍스트 저장
+      if (!btn.dataset.default) btn.dataset.default = btn.textContent.trim();
+
+      const applySelected = () => {
+        if (input.value) {
+          btn.textContent = input.value;
+          box.classList.remove("is-focus");
+          box.classList.add("has-value");
+        } else {
+          btn.textContent = btn.dataset.default;
+          box.classList.remove("has-value");
+        }
+      };
+
+      // 버튼 클릭 → 포커스 상태
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        box.classList.add("is-focus");
+        if (typeof input.showPicker === "function") input.showPicker();
+        else input.focus();
+      });
+
+      // 값 선택(변경) → 포커스해제 + has-value
+      input.addEventListener("input",  applySelected);
+      input.addEventListener("change", applySelected);
+
+      // 바깥 클릭 → 값 없으면 포커스 해제
+      document.addEventListener("click", (e) => {
+        if (!box.contains(e.target) && !input.value) {
+          box.classList.remove("is-focus");
+          btn.textContent = btn.dataset.default;
+        }
+      });
+
+      // 초기 반영
+      applySelected();
+    });
+
+    //출결종류
+    document.querySelectorAll('.select-list [data-att]').forEach(li => {
+      li.addEventListener('click', () => {
+        const type = li.dataset.att;
+        document.querySelectorAll('[data-att-fields]').forEach(f => {
+          f.hidden = f.dataset.attFields !== type;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

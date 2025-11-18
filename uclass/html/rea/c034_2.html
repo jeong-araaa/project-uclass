@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">사유 작성</h1>
+    </header>
+
+    <main class="app-sub">
+      <div class="app-sub__inner">
+        <form id="joinForm" class="form join">
+          <div class="form-body">
+            <div class="form-row">
+              <label for="schedule" class="lbl">일정</label>
+              <select name="schedule" class="int" id="schedule">
+                <option value="오늘">오늘</option>
+                <option value="내일">내일</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="attendance" class="lbl">출결종류</label>
+              <button type="button" class="btn-select" data-modal-open="modal-attendance">출결종류</button>
+              <input type="hidden" class="int" id="attendance">
+            </div>
+            <div class="form-row">
+              <label for="reason" class="lbl">사유</label>
+              <button type="button" class="btn-select" data-modal-open="modal-reason">사유</button>
+              <input type="hidden" id="reason">
+            </div>
+          </div>
+          <div class="form-foot form-bottom">
+            <button type="submit" class="btnForm" id="btnForm">승인 요청</button>
+          </div>
+        </form>
+      </div>
+    </main><!-- //app-sub -->
+    
+    <!-- 모달창 -->
+    <div class="modal modal--detail" id="modal-attendance">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">출결종류</h2>
+          <ul class="select-list">
+            <li>지각</li>
+            <li>결석</li>
+            <li>조퇴</li>
+            <li>외출</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+    <div class="modal modal--detail" id="modal-reason">
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <div class="select__inner">
+          <h2 class="view__title">사유</h2>
+          <ul class="select-list">
+            <li>학원관련</li>
+            <li>과외/스터디</li>
+            <li>운동</li>
+            <li>학교관련</li>
+            <li>병원/건강 관련</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- //modal-->
+  </div>
+
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+  <script type="text/javascript" src="../../assets/js/modal.js"></script>
+  <script type="text/javascript" src="../../assets/js/form.js"></script>
+</body>
+</html>

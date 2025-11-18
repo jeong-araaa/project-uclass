@@ -1,0 +1,274 @@
+@charset "UTF-8";
+/**
+ * Jeong A Ra CSS
+ * http://jeongara.com/
+ *
+ * Contents CSS
+ */
+
+/* ================================
+  메인
+================================= */
+.app-main {padding-bottom:10.2rem;}
+.app-main__inner {padding:0px 2.4rem;}
+.app-main__title {height:8.6rem;padding:3.5rem 1.2rem 0rem;font-weight:600;font-size:2.3rem;color:#FFF;line-height:150%;}
+.app-main__title::before {content:'';position:absolute;top:0;left:0;width:100%;height:21.6rem;background-color:var(--color-pri);border-radius:0 0 0 10rem;z-index:-1;}
+.app-main__img {position:absolute;top:0;left:13.3rem;z-index:-1;}
+
+/* 공지사항 */
+.notice__link {display:grid;row-gap:0.8rem;}
+.notice-link__title {font-size:1.9rem;color:var(--color-dark);line-height:150%;letter-spacing:-0.038rem;}
+.notice-link__desc {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;font-size:1.5rem;color:var(--color-tit);line-height:150%;letter-spacing:-0.03rem;}
+
+/* 상위 5% */
+.record__inner {display:grid;row-gap:0.8rem;}
+.record {display:grid;align-items:center;justify-content:space-between;grid-template-columns:1fr auto;column-gap:1rem;}
+.record__label {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:1.7rem;color:var(--color-tit);line-height:150%;letter-spacing:-0.034rem;box-sizing:border-box;}
+.record__value {font-size:1.5rem;color:var(--color-tit);line-height:150%;letter-spacing:-0.034rem;}
+.record__right {text-align:right;margin-left:1rem;}
+.record-list .record__label {color:var(--color-dark);}
+
+/* 멘토클리닉 */
+.media-list {display:grid;row-gap:1.6rem;}
+.media-list__item {display:grid;align-items:center;column-gap:1rem;grid-template-columns:1fr auto;}
+.media-list__text {min-width:0;box-sizing:border-box;}
+.media-list__subject {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:500;font-size:1.7rem;color:var(--color-dark);line-height:150%;}
+.media-list__time {display:block;margin-top:0.2rem;font-size:1.3rem;color:var(--color-text-sub);}
+.media-list__thumb {overflow:hidden;width:4.8rem;min-width:4.8rem;height:4.8rem;border-radius:1.2rem;}
+.media-list__thumb img {width:100%;height:100%;}
+
+/* 그래프 */
+.graph {display:grid;justify-content:end;position:relative;width:278px;margin:1rem auto 0rem;padding-bottom:26px;font-size:11px !important;color:var(--color-text);}
+.graph__line {width:241px;height:120px;}
+/* 왼쪽 타이틀 */
+.graph__left_title {display:grid;align-items:end;grid-template-rows:min-content;grid-auto-flow:row;position:absolute;top:0;left:0;height:120px;text-align:right;}
+.title-item--1 {order:2;margin-bottom:-8px;}
+.title-item--2 {order:1;margin-top:-8px;}
+/* 평균 */
+.standard-item {display:flex;align-items:center;position:absolute;top:50%;width:100%;margin-top:-21.8px;z-index:2;}
+.standard-item span {width:38px;padding-left:11px;;color:var(--color-pri);}
+.standard-item::after {content:'';position:absolute;top:50%;left:38px;width:240px;height:1.5px;margin-top:-1px;background-repeat:no-repeat;background-position:0;background-image:url(../img/icon/line.svg);}
+/* 월 및 바 */
+.graph__infos {display:grid;align-items:flex-end;justify-content:end;grid-template-columns:repeat(6, 40px);position:absolute;top:0;left:0;width:100%;height:100%;}
+.infos-item {position:relative;display:grid;align-items:end;height:120px;}
+.infos-item__name {text-align:center;line-height:150%;}
+.infos-item__bar {position:absolute;left:0;right:0;bottom:26px;width:24px;margin:0 auto;background-color:#A8EAFD;border-radius:4px 4px 0px 0px;}
+
+
+
+
+/* ================================
+  메인메뉴
+================================= */
+.menu__nav {display:grid;row-gap:2.4rem;padding:0rem 2.4rem;}
+.menu__inner {display:grid;row-gap:0.8rem;}
+.menu-item {display:flex;align-items:center;column-gap:1.2rem;position:relative;padding:1.5rem 1.6rem;}
+a.menu-item::after {content:'';position:absolute;top:1.2rem;right:0.8rem;width:2.4rem;height:2.4rem;;background-repeat:no-repeat;background-position:center;background-image:url(../img/icon/ico_right.svg);}
+.menu__title {padding-left:1.8rem;font-weight:500;font-size:1.5rem;color:var(--color-text);line-height:100%;}
+.menu-item__label {font-size:1.7rem;color:var(--color-tit);}
+.menu-item__icon {height:2.4rem;}
+
+/* 리스트 */
+.menu-list {overflow:hidden;background-color:var(--color-white);border-radius:1.2rem;border:1px solid var(--color-line)}
+.menu-list {list-style:none;}
+.menu-list__item {border-bottom:1px solid var(--color-line);}
+.menu-list__item:last-child {border-bottom:none;}
+
+.menu__last {display:flex;align-items:center;justify-content:space-between;padding:0rem 1.2rem 1.9rem;border-bottom:1px solid var(--color-line);}
+.menu__last .menu__title {padding:0rem;}
+.menu__last .menu-item {background-color:var(--color-white);border-radius:1.2rem;border:1px solid var(--color-line)}
+
+
+
+/* ================================
+  출결현황 (모달창 - 컴포넌트로 분리)
+================================= */
+/* 날짜 칩 */
+.date-chip {display:flex;align-items:center;justify-content:center;width:100%;padding-bottom:2.4rem;background-color:transparent;border:none;border-bottom:2px solid #C2CAF4;font-weight:700;font-size:2.4rem;color:var(--color-pri);line-height:100%;}
+
+/* 입실/퇴실 */
+.inout {display:grid;justify-content:center;row-gap:1.6rem;margin:0.2rem 0rem;}
+.inout__item {display:flex;align-items:center;column-gap:1rem;font-size:1.5rem;color:var(--color-gray);}
+.inout__label {display:flex;align-items:center;column-gap:0.4rem;}
+.inout__time {color:var(--color-tit);}
+
+/* 교시 리스트 */
+.period-list {display:grid;row-gap:0.8rem;}
+.period {display:flex;align-items:center;justify-content:space-between;height:5.9rem;padding:0px 1.6rem;background-color:transparent;border-radius:1.2rem;border:1px solid var(--color-line);}
+.period__label {font-weight:700;font-size:1.7rem;color:var(--color-tit);line-height:150%;letter-spacing:-0.034rem;}
+.status {display:flex;align-items:center;justify-content:center;width:5.5rem;height:2.7rem;background-color:#F9E0E0;border-radius:10rem;font-size:1.5rem;color:#E05241;line-height:100%;letter-spacing:-0.03rem;}
+.status.status--present {background-color:#E5E9FD;color:var(--color-pri);}
+.period.is-active {background-color:var(--color-white);}
+.period.is-disabled .status {opacity:0;}
+
+/* 캘린더 */
+/* .calendar__week {display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:0.85rem;}
+.calendar__dow {font-size:1.5rem;color:var(--color-dark2);line-height:2.3rem;text-align:center;}
+.calendar__grid {display:grid;grid-template-columns:repeat(7,1fr);padding-bottom:0.8rem;}
+.calendar__day {display:flex;align-items:center;justify-content:center;height:4.4rem;background:var(--color-white);border:0;border-radius:100%;color:var(--color-dark2);text-align:center;font-size:1.7rem;}
+.calendar__day:focus-visible {outline:2px solid #3a6ff8;outline-offset:2px;}
+.calendar__day--muted {font-weight:300;color:#8A949E;}
+.calendar__day--today {background:#1e2f6e;border-color:#1e2f6e;color:#fff;}
+.calendar__day--selected {background:var(--color-pri);border-color:var(--color-pri);color:#fff;} */
+
+
+
+/* ================================
+  알람화면 (리스트는 컴포넌트로 분리)
+================================= */
+/* 알림화면 */
+.list-alarm .item {grid-template-columns:auto 1fr;}
+
+
+
+/* ================================
+  게시판형태 상세
+================================= */
+.details {}
+.details__head {display:grid;row-gap:1.6rem;padding-bottom:2.4rem;border-bottom:1px solid var(--color-line);}
+.details__title {font-weight:700;font-size:1.7rem;line-height:150%;color:var(--color-dark);}
+.details__meta {display:flex;align-items:center;column-gap:0.8rem;font-weight:300;font-size:1.3rem;color:var(--color-gray);line-height:100%;}
+.details__body {padding:2.4rem 0rem 1.6rem;font-size:1.5rem;color:var(--color-text);}
+
+
+
+/* ================================
+  이용약관
+================================= */
+.terms {display:grid;row-gap:1.6rem;}
+.terms-item {display:block;position:relative;margin-bottom:1.6rem;}
+.terms-item__input {position:absolute;opacity:0;width:0;height:0;pointer-events:none;}
+.terms-item__label {display:flex;align-items:center;justify-content:flex-end;height:4.8rem;padding:0rem 1.6rem;background-color:var(--color-white);border-radius:1rem;border:1px solid rgba(229, 229, 229, 0.87);font-size:1.7rem;color:var(--color-gray);letter-spacing:0.0034rem;}
+.terms-item__label:has(input:focus-visible) {outline:2px solid var(--color-pri); outline-offset:2px;}
+.terms-item__badge {display:flex;column-gap:0.8rem;color:var(--color-dark);}
+.terms-item__check {width:2.4rem;height:2.4rem;background-repeat:no-repeat;background-position:center;background-image:url(../../assets/img/icon/ico_checkbox.svg);}
+.terms-item__input:checked ~ .terms-item__label {border-color: var(--color-pri);color:var(--color-dark);}
+.terms-item__input:checked ~ .terms-item__label .terms-item__badge {color:var(--color-pri);}
+.terms-item__input:checked ~ .terms-item__label .terms-item__check {background-image:url(../../assets/img/icon/ico_checkbox_active.svg);}
+.terms-item__title {position:absolute;top:0;left:0;padding:0rem 1.6rem;font-size:1.7rem;color:var(--color-gray);line-height:4.8rem;}
+.terms-item__input:checked ~ .terms-item__title {color:var(--color-dark)}
+.terms .btnForm {opacity:0;}
+.terms .btnForm.is-active {opacity:1}
+.terms p {line-height:150%;}
+
+
+
+/* ================================
+  내프로필
+================================= */
+.profile {display:grid;row-gap:2.4rem;margin-top:-1rem;}
+.profile__avatar {display:grid;align-items:center;justify-content:center;row-gap:1rem;text-align:center;}
+.avatar-btn {overflow:hidden;width:10.4rem;height:10.04rem;margin:0 auto;border:none;background-color:#D9D9DE;background-repeat:no-repeat;background-position:center;background-image:url(../../assets/img/user_default.svg);border-radius:4rem;}
+.avatar-btn img {width:100%;height:100%;}
+.profile__name {font-weight:700;font-size:1.7rem;color:var(--color-dark);}
+
+/* 프로필에서 카드형태 컴포넌트 사용 커스텀 */
+.profile .card {row-gap:2.4rem;padding:1.6rem 1.6rem 1.6rem;}
+.profile .card__head {display:flex;align-items:center;column-gap:0.8rem;}
+.profile .card__icon {display:block;width:2rem;height:2rem;background-repeat:no-repeat;background-position:center;background-size:cover;}
+.profile .card__title {font-size:1.5rem;color:var(--color-text);line-height:2.4rem;}
+.profile .info__row dd {display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:21rem;text-align:right;}
+
+
+
+/* ================================
+  요청사항 (item 컴포넌트 사용)
+================================= */
+.app-header .view__meta {position:absolute;top:0;right:2.4rem;height:5rem;}
+.item__answer {display:flex;align-items:center;column-gap:0.8rem;}
+.answer-item {display:inline-flex;align-items:center;justify-content:center;column-gap:0.8rem;height:2.8rem;margin-bottom:0.8rem;padding:0rem 1.2rem;border-radius:10rem;font-size:1.5rem;color:var(--color-white);line-height:normal;letter-spacing:-0.075rem;}
+.answer--uncon {background-color:var(--color-pri);}
+.answer--uncon::after {content:'';display:flex;width:1.6rem;height:1.6rem;background-repeat:no-repeat;background-position:center;background-size:cover;background-image:url(../img/icon/ico_uncon.svg);}
+.answer--con {background-color:var(--color-gray);}
+.answer--con::after {content:'';display:flex;width:1.6rem;height:1.6rem;background-repeat:no-repeat;background-position:center;background-size:cover;background-image:url(../img/icon/ico_con.svg);}
+.answer--parents {background-color:#00127A;}
+.answer--parents::after {content:'';display:flex;width:1.6rem;height:1.6rem;background-repeat:no-repeat;background-position:center;background-size:cover;background-image:url(../img/icon/ico_con.svg);}
+.answer--pending {background-color:var(--color-tit);}
+.answer--pending::after {content:'';display:flex;width:1.6rem;height:1.6rem;background-repeat:no-repeat;background-position:center;background-size:cover;background-image:url(../img/icon/ico_waiting.svg);}
+.answer--com {background-color:var(--color-gray);}
+.item__close {position:absolute;top:1.6rem;right:1.6rem;width:2.4rem;height:2.4rem;background-repeat:no-repeat;background-position:center;background-image:url(../img/icon/ico_close.svg);background-color:transparent;background-size:70%;border:none;}
+
+
+
+/* ================================
+  로그인
+================================= */
+.landing-wrap {overflow:hidden;display:grid;justify-content:center;align-items:center;}
+.login-wrap {overflow:hidden;display:grid;justify-content:center;min-height:100%;text-align:center;}
+.login-head {margin-bottom:7.95rem;padding-top:9.95rem;}
+.login-wrap .form fieldset {display:grid;row-gap:1.6rem;}
+.login-btn {display:flex;align-items:center;justify-content:center;column-gap:1.6rem;width:32.7rem;height:5.6rem;background-color:transparent;border-radius:1rem;border:1px solid var(--color-tit);font-weight:700;font-size:1.9rem;color:var(--color-tit);}
+.login-btn i.icon {width:3.6rem;height:3.6rem;}
+
+
+
+/* ================================
+  추가입력
+================================= */
+.join__types {display:grid;row-gap:1.6rem;margin-bottom:3.2rem;}
+.types-title {font-weight:500;font-size:1.7rem;color:var(--color-tit);letter-spacing:-0.034rem;line-height:100%;}
+.chip__inner {display:grid;align-items:center;justify-content:center;column-gap:0.8rem;grid-template-columns:repeat(3, 1fr);margin-top:1.6rem;}
+.chip {display:inline-flex;align-items:center;justify-content:center;gap:0.8rem;height:4.8rem;background-color:#F5F5F5;border:1px solid var(--line);border-radius:999px;cursor:pointer;user-select:none}
+.chip__input {position:absolute;opacity:0;width:0;height:0}
+.chip__label {display:flex;align-content:center;column-gap:0.8rem;font-size:1.6rem;color:#666;white-space:nowrap;}
+.chip:has(.chip__input:checked) {background:var(--color-pri);border-color:var(--color-pri)}
+.chip:has(.chip__input:checked) .chip__label {color:#fff;font-weight:500}
+.chip:has(.chip__input:checked) .chip__label::after {opacity:1;}
+
+/* 승인대기중 */
+.app-complete {display:flex;flex-direction:column;align-items:center;row-gap:1.6rem;position:absolute;top:0;left:0;width:100%;height:100%;padding-top:13rem;background-color:var(--color-bg);}
+.app-complete > p {font-size:1.7rem;color:var(--color-text);line-height:150%;letter-spacing:-0.034rem;text-align:center;}
+.complete-head {text-align:center;}
+.complete-head b {display:block;margin-bottom:4rem;font-weight:700;font-size:1.9rem;color:var(--color-tit);letter-spacing:-0.0034rem;line-height:150%;}
+.complete-head strong {display:block;margin:2.2rem 0rem 2.4rem;font-weight:700;font-size:1.7rem;color:var(--color-tit);letter-spacing:-0.0034rem;line-height:150%;}
+
+
+
+/* ================================
+  정기 일정
+================================= */
+.sch {}
+.sch-list {display:grid;row-gap:1.6rem;list-style:none;}
+.sch-list li a {display:flex;align-items:center;position:relative;width:100%;height:4.8rem;padding:0 1.6rem;background-color:var(--color-white);border:1px solid var(--color-line);border-radius:1rem !important;font-size:1.7rem;color:var(--color-text);line-height:100%;letter-spacing:-0.034rem;}
+.sch-list .btn-select {color:var(--color-text)}
+.sch-list li.is-completed .sch-title {position:absolute;top:-0.7rem;left:1.2rem;padding:0rem 0.5rem;font-size:1.1rem;color:var(--color-dark);background-color:var(--color-white);z-index:2;line-height:1;}
+.sch-list li.is-completed a {color:var(--color-tit)}
+.sch-list li.is-disabled a {background-color:#F6F6F6;color:var(--color-gray);cursor:default !important;}
+.sch-list li.is-disabled .sch-title {opacity:0.7;}
+.tab-content {display:none;}
+.tab-content.is-active {display:block;}
+
+/* 대기중 승인알림 */
+.app-noti {display:grid;flex-direction:column;row-gap:1.6rem;margin-top:2.4rem;}
+.noti-item {display:inline-flex;align-items:center;justify-content:center;width:14.7rem;;height:3.7rem;padding:0rem 1.6rem;border-radius:10rem;border:1px solid var(--color-pri);font-weight:500;font-size:1.5rem;color:var(--color-dark);letter-spacing:-0.015rem;column-gap:1rem;white-space:nowrap;}
+.noti-item::after {content:'';display:block;width:2.4rem;height:2.4rem;background-repeat:no-repeat;background-position:center;}
+.noti-item.noti--admin:after {background-image:url(../img/icon/ico_admin.svg);}
+.noti-item.noti--parent:after {background-image:url(../img/icon/ico_parents.svg);}
+.noti-item.is-active {background-color:var(--color-pri);color:var(--color-white);}
+
+
+
+/* ================================
+  채팅
+================================= */
+.chat {margin-top:-3.6rem;padding:0rem 2.4rem 11.9rem;background-color:var(--color-bg);}
+.chat-date {display:grid;justify-content:center;padding:2.4rem 0rem;}
+.chat-date > span {display:inline-flex;padding:0rem 2rem;background-color:#D8D8D8;border-radius:10rem;font-weight:400;font-size:1.3rem;color:var(--color-text);}
+.chat-box {display:table;flex-wrap:wrap;position:relative;min-width:8.2rem;max-width:28.9rem;margin-bottom:2.8rem;padding:1.2rem 1.6rem;font-size:1.6rem;color:var(--color-tit);}
+.cheat-myinfo {display:flex;align-items:flex-start;column-gap:0.8rem;position:absolute;top:-2.2rem;left:-3.2rem;}
+.myinfo-photo {overflow:hidden;width:2.4rem;height:2.4rem;border-radius:10rem;outline:2px solid var(--color-white);}
+.myinfo-photo img {width:100%;height:100%;}
+.myinfo-name {font-size:1.2rem;color:#9A9BB1;}
+.chat-box.no-time {margin-top:2.8rem;margin-bottom:0.8rem;}
+.chat-item {display:inline-flex;text-align:left;}
+.chat-time {display:flex;align-items:center;column-gap:0.8rem;width:100%;margin-top:0.8rem;font-size:1.2rem;color:var(--color-gray);}
+.chat-box-to {margin-left:3.2rem;background-color:var(--color-white);border-radius:0rem 1.6rem 1.6rem 1.6rem;}
+.chat-box-to.chat-box.no-time {margin-top:3.8rem;}
+.chat-box-from {margin:0 auto;margin-right:0;margin-bottom:2.8rem;background-color:#1B36DA;border-radius:1.6rem 1.6rem 0rem 1.6rem;color:var(--color-white);text-align:right;}
+.chat-box-from .chat-time {justify-content:flex-end;color:#E9EAEB;}
+.chat-box-from .item_read {width:1.4rem;height:1.4rem;background-repeat:no-repeat;background-position:center;background-image:url(../img/icon/ico_read.svg);font-size:0;}
+.chat-form {display:flex;align-items:center;column-gap:1.2rem;position:fixed;left:0;bottom:0;width:100%;padding:2.6rem 2.4rem;background-color:var(--color-white);border-top:1px solid #E9EAEB;}
+.chat-textarea {width:100%;height:4.8rem;padding:1rem 1.6rem;background-color:var(--color-white);border-radius:0.8rem;border:1px solid #D0D1DB;}
+.chat-send {min-width:4.4rem;height:4.4rem;background-color:var(--color-pri);border-radius:2.2rem;border:none;font-size:0;background-repeat:no-repeat;background-position:center;background-image:url(../img/icon/ico_send.svg);}
+.chat-send:active {background-color:#0018A7;}
+.chat-send:disabled {background-color:#A5A8BA;}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">상벌점 확인</h1>
+    </header>
+
+    <main class="app-sub">
+      <div class="app-sub__inner">
+        <section class="demerit">
+          <article class="item-total">
+            <h2 class="total__title">이번달 상벌점 합계</h2>
+            <p class="total__desc"><b>30</b>점</p>
+          </article>
+          <article class="item-list">
+            <div class="item">
+              <div class="item__inner">
+                <div class="item__head">
+                  <h2 class="item__title">학습 외 전자기기 사용</h2>
+                  <div class="item__score score--minus">+ 5 점</div>
+                </div>
+                <p class="item__meta">
+                  <span class="item__date">09-12</span>
+                  <span class="item__time">12:34</span>
+                </p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="item__inner">
+                <div class="item__head">
+                  <h2 class="item__title">학습 외 전자기기 사용</h2>
+                  <div class="item__score score--plus">- 5 점</div>
+                </div>
+                <p class="item__meta">
+                  <span class="item__date">09-12</span>
+                  <span class="item__time">12:34</span>
+                </p>
+              </div>
+            </div>
+          </article><!-- //card-list -->
+        </section>
+      </div>
+    </main><!-- //app-sub -->
+  </div>
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+</body>
+</html>

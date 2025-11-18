@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+  <!-- 달력 css -->
+  <link rel="stylesheet" href="../../assets/css/lightpick.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">출결현황</h1>
+    </header>
+
+    <main class="app-sub  app--bg">
+      <div class="app-sub__inner">
+        <!-- 날짜 칩 -->
+        <button type="button" class="date-chip" id="openCalendarBtn" data-modal-open="modal-calendar">10월 23일 목요일</button>
+
+        <!-- 입실/퇴실 -->
+        <section class="inout" aria-labelledby="inoutTitle">
+          <h2 id="inoutTitle" class="blind">입실/퇴실 시간</h2>
+          <div class="inout__item">
+            <span class="inout__label">
+              <i class="icon icon--time_in"></i>
+              입실
+            </span>
+            <time class="inout__time" datetime="13:24">13:24</time>
+          </div>
+          <div class="inout__item">
+            <span class="inout__label">
+              <i class="icon icon--time_out"></i>
+              퇴실
+            </span>
+            <time class="inout__time" datetime="20:07">20:07</time>
+          </div>
+        </section>
+
+        <!-- 교시 리스트 -->
+        <section class="period-list" aria-labelledby="periodTitle">
+          <h2 id="periodTitle" class="blind">교시별 출결</h2>
+          <div class="period is-active">
+            <span class="period__label">1교시</span>
+            <span class="status status--present">출석</span>
+          </div>
+          <div class="period is-active">
+            <span class="period__label">2교시</span>
+            <span class="status status--present">출석</span>
+          </div>
+          <div class="period is-active">
+            <span class="period__label">3교시</span>
+            <span class="status status--late">지각</span>
+          </div>
+          <div class="period is-active">
+            <span class="period__label">4교시</span>
+            <span class="status status--out">외출</span>
+          </div>
+          <div class="period is-active">
+            <span class="period__label">5교시</span>
+            <span class="status status--absent">미출석</span>
+          </div>
+          <div class="period is-disabled" aria-disabled="true">
+            <span class="period__label">6교시</span>
+            <span class="status">-</span>
+          </div>
+          <div class="period is-disabled" aria-disabled="true">
+            <span class="period__label">7교시</span>
+            <span class="status">-</span>
+          </div>
+          <div class="period is-disabled" aria-disabled="true">
+            <span class="period__label">8교시</span>
+            <span class="status">-</span>
+          </div>
+        </section>
+      </div>
+    </main><!-- //app-sub -->
+  </div>
+
+
+  <!-- 모달창 -->
+  <div class="modal" id="modal-calendar">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog" role="document">
+      <div class="calendar">
+        <div id="lp-anchor"></div>
+        <div class="calendar__week" aria-hidden="true">
+          <span class="calendar__dow">일</span><span class="calendar__dow">월</span><span class="calendar__dow">화</span>
+          <span class="calendar__dow">수</span><span class="calendar__dow">목</span><span class="calendar__dow">금</span><span class="calendar__dow">토</span>
+        </div>
+        <div class="calendar__grid" role="grid" aria-label="2024년 12월">
+          <button class="calendar__day calendar__day--muted" role="gridcell" aria-disabled="true" tabindex="-1">26</button>
+          <button class="calendar__day calendar__day--muted" role="gridcell" aria-disabled="true" tabindex="-1">27</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">1</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">2</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">3</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">4</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">5</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">6</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">7</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">8</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">9</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">10</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">11</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">12</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">13</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">14</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">15</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">16</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">17</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">18</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">19</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">20</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">21</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">22</button>
+          <button class="calendar__day calendar__day--today" aria-current="date" role="gridcell" aria-selected="true">23</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">24</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">25</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">25</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">27</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">28</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">29</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">30</button>
+          <button class="calendar__day" role="gridcell" aria-selected="false">31</button>
+          <button class="calendar__day calendar__day--muted" role="gridcell" aria-disabled="true" tabindex="-1">1</button>
+          <button class="calendar__day calendar__day--muted" role="gridcell" aria-disabled="true" tabindex="-1">2</button>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button type="button" class="btn btn--today" data-today>오늘</button>
+        <div class="modal__right">
+          <button type="button" class="btn btn--ghost" data-modal-close>취소</button>
+          <button type="button" class="btn btn--primary" data-ok data-modal-close>선택</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- //modal-->
+
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+  <script type="text/javascript" src="../../assets/js/modal.js"></script>
+  <!-- 달력 -->
+  <script type="text/javascript" src="../../assets/js/moment.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/lightpick.js"></script>
+  <script>
+    if (window.moment) moment.locale('ko');
+
+    (function () {
+      const modal   = document.getElementById('modal-calendar');
+      const chipBtn = document.querySelector('[data-modal-open="modal-calendar"]');
+      const anchor  = modal.querySelector('#lp-anchor');
+      if (!modal || !chipBtn || !anchor) return;
+
+      const pad2 = (n) => String(n).padStart(2, '0');
+      const WEEK_KO = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+
+      // 숨김 input
+      let hiddenField = modal.querySelector('#lp-hidden-field');
+      if (!hiddenField) {
+        hiddenField = document.createElement('input');
+        hiddenField.type = 'text';
+        hiddenField.id = 'lp-hidden-field';
+        hiddenField.className = 'blind';
+        hiddenField.setAttribute('aria-hidden', 'true');
+        anchor.before(hiddenField);
+      }
+
+      // 현재 선택값 메모
+      let pickedDate = null;
+
+      // Lightpick
+      const picker = new Lightpick({
+        field: hiddenField,
+        parentEl: anchor,
+        inline: true,
+        singleDate: true,
+        autoclose: false,
+        numberOfMonths: 1,
+        numberOfColumns: 1,
+        firstDay: 1,
+        lang: 'ko-KR',
+        weekdayStyle: 'short',
+        format: 'MM월 DD일 dddd',
+        // 날짜 클릭: 닫지 않고 값만 저장
+        onSelect(start) {
+          pickedDate = start ? start.toDate() : null;
+        }
+      });
+
+      // “선택” 버튼으로 확정
+      const okBtn = modal.querySelector('[data-ok]');
+      okBtn.addEventListener('click', () => {
+        if (!pickedDate) return; // 선택 안 했으면 무시
+        const y = pickedDate.getFullYear();
+        const m = pickedDate.getMonth() + 1;
+        const d = pickedDate.getDate();
+        const w = WEEK_KO[pickedDate.getDay()];
+        chipBtn.textContent = `${pad2(m)}월 ${pad2(d)}일 ${w}`;
+        // 닫힘은 data-modal-close로 처리됨
+      });
+
+      // “오늘”은 선택만(닫지 않음)
+      const todayBtn = modal.querySelector('[data-today]');
+      todayBtn.addEventListener('click', () => picker.setDate(new Date()));
+
+      // 헤더: 년 → 월, ‘년’ 표시
+      const fixHeader = () => {
+        picker.el.querySelectorAll('.lightpick__month-title').forEach(title => {
+          const month = title.querySelector('.lightpick__select-months');
+          const year  = title.querySelector('.lightpick__select-years');
+          if (month && year) {
+            if (year.nextSibling !== month) title.insertBefore(year, month);
+            year.querySelectorAll('option').forEach(opt => {
+              if (!opt.textContent.includes('년')) opt.textContent = `${opt.textContent}년`;
+            });
+          }
+        });
+      };
+
+      // 모달 열릴 때 렌더 UI 정리
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('[data-modal-open="modal-calendar"]')) return;
+        modal.querySelector('.calendar__week').style && (modal.querySelector('.calendar__week').style.display = 'none');
+        modal.querySelector('.calendar__grid').style && (modal.querySelector('.calendar__grid').style.display = 'none');
+        setTimeout(fixHeader, 80);
+      });
+
+      // 렌더 변경 감시
+      const observer = new MutationObserver(fixHeader);
+      picker.el && observer.observe(picker.el, { childList: true, subtree: true });
+
+      // 요일 한글 보정(혹시 영어로 나올 경우)
+      const DOW_MAP = { Sun:'일', Mon:'월', Tue:'화', Wed:'수', Thu:'목', Fri:'금', Sat:'토' };
+      const mo = new MutationObserver(() => {
+        picker.el.querySelectorAll('.lightpick__day-of-the-week').forEach(el => {
+          const t = (el.textContent || '').trim();
+          if (DOW_MAP[t]) el.textContent = DOW_MAP[t];
+        });
+      });
+      picker.el && mo.observe(picker.el, { childList:true, subtree:true });
+    })();
+  </script>
+</body>
+</html>

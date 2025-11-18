@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--sub">
+      <button type="button" class="btn btn--back" aria-label="뒤로가기"></button>
+      <h1 class="app-header__title">프로필</h1>
+    </header>
+
+    <main class="app-sub">
+      <div class="app-sub__inner">
+        <section class="profile">
+          <!-- 아바타 -->
+          <div class="profile__avatar">
+            <button type="button" class="avatar-btn" aria-label="프로필 이미지 변경"><!-- img src="../../assets/img/my.png" alt="내이미지" --></button>
+            <p class="profile__name">김하나</p>
+          </div>
+
+          <!-- 카드: 계정 정보 -->
+          <article class="card">
+            <header class="card__head">
+              <i class="icon icon--user"></i>
+              <h2 class="card__title">계정 정보</h2>
+            </header>
+            <div class="info-list">
+              <dl class="info__row">
+                <dt>ID</dt>
+                <dd>sdfsdf@email.com</dd>
+              </dl>
+              <dl class="info__row">
+                <dt>연락처</dt>
+                <dd>010-2345-6789</dd>
+              </dl>
+              <dl class="info__row">
+                <dt>생년월일</dt>
+                <dd>2012-11-11</dd>
+              </dl>
+            </div>
+          </article>
+
+          <!-- 카드: 학부모 정보 -->
+          <article class="card">
+            <header class="card__head">
+              <i class="icon icon--parents"></i>
+              <h2 class="card__title">학부모 정보</h2>
+            </header>
+            <div class="info-list">
+              <dl class="info__row">
+                <dt>학부모 이름</dt>
+                <dd>김상우</dd>
+              </dl>
+              <dl class="info__row">
+                <dt>연락처</dt>
+                <dd>010-4567-6789</dd>
+              </dl>
+              <dl class="info__row">
+                <dt>이메일</dt>
+                <dd>sdaeccs@naver.com</dd>
+              </dl>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main><!-- //app-sub -->
+  </div>
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+</body>
+</html>

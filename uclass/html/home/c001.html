@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>UClass</title>
+  <link rel="stylesheet" href="../../assets/css/default.css" />
+</head>
+
+<body>
+  <div id="app" class="app">
+    <header class="app-header app-header--main">
+      <a href="c006.html" class="app-header__link app-header__notice" aria-label="알림">
+        <i class="icon icon--bell"></i>
+        <span class="is-on">
+          <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+            <circle cx="2" cy="2" r="2" fill="#FF6E39" />
+          </svg>
+        </span>
+      </a>
+      <a href="c007.html" class="app-header__link app-header__menu" aria-label="메뉴열기">
+        <i class="icon icon--hamburger"></i>
+      </a>
+    </header>
+
+    <main class="app-main app--bg">
+      <div class="app-main__inner">
+        <h2 class="app-main__title">광장 센터</h2>
+        <section class="card">
+          <h2 class="card__title">
+            <i class="icon icon--notice"></i>
+            공지사항
+          </h2>
+          <div class="notice__inner">
+            <a href="#" class="notice__link">
+              <strong class="notice-link__title">유클래스 특별 공지사항 안내</strong>
+              <p class="notice-link__desc">앞으로 중요한 사항은 이렇게 공지를 통해 알려 드리고자 합니다. 여러분의 많은 관심을 부탁드리며 공지를 참고해주세요.</p>
+            </a>
+          </div>
+        </section>
+        <section class="card">
+          <h2 class="card__title">
+            <i class="icon icon--time"></i>
+            이번달 학습시간
+          </h2>
+          <div class="record">
+            <span class="record__label">김아름</span>
+            <span class="record__label"><strong>11</strong>시간 <strong>30</strong>분</span>
+          </div>
+        </section>
+        <section class="card">
+          <h2 class="card__title">
+            <i class="icon icon--book"></i>
+            월별 학습시간
+          </h2>
+          <div class="graph" style="width:278px;height:146px;">
+            <canvas id="monthlyChart" width="241" height="146"></canvas>
+            <div class="graph__left_title">
+              <div class="title-item--1">0</div>
+              <div class="title-item--2">12시간</div>
+            </div>
+            <div class="standard-item"><span>평균</span></div>
+          </div>
+          <div class="record">
+            <span class="record__label">유베이스 평균</span>
+            <span class="record__label"><strong>11</strong>시간 <strong>30</strong>분</span>
+          </div>
+        </section>
+        <section class="card">
+          <h2 class="card__title">
+            <i class="icon icon--ranking"></i>
+            상위 5%
+          </h2>
+          <div class="record-list">
+            <div class="record__inner">
+              <div class="record">
+                <span class="record__label">kk***c***kdddddddddddddddddddd*</span>
+                <span class="record__value"><strong>11</strong>시간 <strong>30</strong>분</span>
+              </div>
+              <div class="record">
+                <span class="record__label">y***b***</span>
+                <span class="record__value"><strong>12</strong>시간 <strong>10</strong>분</span>
+              </div>
+              <div class="record">
+                <span class="record__label">v***o***</span>
+                <span class="record__value"><strong>08</strong>시간 <strong>27</strong>분</span>
+              </div>
+              <div class="record">
+                <span class="record__label">x***w***</span>
+                <span class="record__value"><strong>02</strong>시간 <strong>45</strong>분</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- <section class="card clinic">
+          <h2 class="card__title">
+            <i class="icon icon--mento"></i>
+            멘토 클리닉
+          </h2>
+          <ul class="media-list">
+            <li class="media-list__item">
+              <div class="media-list__text">
+                <p class="media-list__subject">유클래스만의 특별함유클래스만의 특별함유클래스만의 특별함유클래스만의 특별함유클래스만의 특별함</p>
+                <span class="media-list__time">3시간전</span>
+              </div>
+              <div class="media-list__thumb">
+                <img src="../../assets/img/thumb01.jpg" alt="썸네일">
+              </div>
+            </li>
+            <li class="media-list__item">
+              <div class="media-list__text">
+                <p class="media-list__subject">성적 향상을 원한다 무조건</p>
+                <span class="media-list__time">1시간전</span>
+              </div>
+              <div class="media-list__thumb">
+                <img src="../../assets/img/thumb02.jpg" alt="썸네일">
+              </div>
+            </li>
+            <li class="media-list__item">
+              <div class="media-list__text">
+                <p class="media-list__subject">멘토의 자존심</p>
+                <span class="media-list__time">30분전</span>
+              </div>
+              <div class="media-list__thumb">
+                <img src="../../assets/img/thumb03.jpg" alt="썸네일">
+              </div>
+            </li>
+          </ul>
+        </section> -->
+      </div>
+    </main><!-- //app-sub -->
+
+    <nav class="tabbar" aria-label="하단탭">
+      <a href="c001.html" class="tabbar__item is-active"><i class="icon icon--home"></i> 홈</a>
+      <a href="../dm/c032.html" class="tabbar__item"><i class="icon icon--chat"></i> DM </a>
+      <a href="../rea/c035.html" class="tabbar__item"><i class="icon icon--file"></i> 사유 </a>
+    </nav>
+  </div>
+  <script type="text/javascript" src="../../assets/js/common.js"></script>
+  <script type="text/javascript" src="../../assets/js/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('monthlyChart').getContext('2d');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['1월','2월','3월','4월','5월','6월'],
+        datasets: [{
+          data: [12, 8, 5, 3, 10, 2],
+          backgroundColor: '#A8EAFD',
+          borderRadius: 4,
+          barThickness: 22
+        }]
+      },
+      options: {
+        responsive: false,
+        scales: {
+          x: {
+            grid: { color:'#ddd' },
+            ticks: { color:'#555', font:{ size:11 } }
+          },
+          y: {
+            min: 0,
+            max: 12,
+            ticks: { display:false },
+            grid: { color:'#ddd' }
+          }
+        },
+        plugins: { legend: { display:false } }
+      }
+    });
+  </script>
+</body>
+</html>

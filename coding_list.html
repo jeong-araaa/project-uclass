@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=768, initial-scale=1.0" />
+  <title>유클래스</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Sans KR", "Malgun Gothic", "AppleSDGothicNeo", "AppleGothic", sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #62697b;
+      letter-spacing: -0.2992px;
+      box-sizing: border-box;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    table,
+    tr,
+    td,
+    th {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      left: 0;
+      right: 0;
+      width: 100%;
+      max-width: 1440px;
+      height: 100px;
+      margin: 0 auto;
+      background-color: #fff;
+      z-index: 100;
+    }
+
+    .header h1 {
+      width: 100%;
+      text-align: center;
+      font-size: 25px;
+      letter-spacing: 0px;
+      color: #000;
+    }
+
+    .header h1 img {
+      height: 60px;
+    }
+
+    .header .link {
+      position: absolute;
+      bottom: 5px;
+      right: 5%;
+    }
+
+    .header .link a {
+      font-size: 16px;
+      color: #fff;
+      margin-left: 10px;
+    }
+
+    .date {
+      position: absolute;
+      right: 0px;
+      top: 8px;
+      width: 350px;
+      padding: 5px 10px;
+      font-size: 12px !important;
+      color: #2a2a2a;
+      background-color: #eaeaea;
+      border-radius: 5px;
+    }
+
+    .date .modify {
+      font-size: 12px !important;
+    }
+
+    .word_list {
+      position: absolute !important;
+      right: 20px;
+      bottom: 32px;
+      background-color: #fff;
+      display: inline-block;
+    }
+
+    .word_list p {
+      padding: 0 5px;
+      font-size: 11px;
+    }
+
+    .tableWrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding-top: 100px;
+      padding-bottom: 50px;
+    }
+
+    .tableTh {
+      position: fixed;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      background-color: #fff;
+      z-index: 50;
+    }
+
+    .tableTd {
+      margin-top: 32px;
+    }
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    tr:hover {
+      background-color: #fdd bba;
+    }
+
+    th {
+      padding: 7px 10px;
+      background-color: #0a42e1;
+      color: #fff;
+      font-weight: normal;
+      word-wrap: break-word;
+    }
+
+    th span {
+      color: #f2fff9;
+    }
+
+    td {
+      padding: 5px 10px;
+      border: 1px solid #f5f5f5;
+      text-align: center;
+      color: #999;
+      word-wrap: break-word;
+    }
+
+    td:nth-child(5),
+    td:nth-child(6) {
+      text-align: left;
+      padding: 5px 10px;
+    }
+
+    td a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      cursor: pointer;
+      margin: 3px 0px;
+    }
+
+    td a:hover {
+      text-decoration: underline;
+    }
+
+    td a strong.txt {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 0px 5px;
+      background-color: #0f8340;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 12px;
+      color: #FFF;
+    }
+
+    td a strong.txt.txtko {
+      background-color: #f3c920;
+      color: #2a2a2a;
+    }
+
+    td a span {
+      color: #c0c0c0;
+      margin-left: 3px
+    }
+
+    td p {
+      color: #FF0004;
+      line-height: 1.3;
+    }
+
+    .tr_new {
+      background-color: #fff0f0 !important;
+    }
+
+    .tr_off {
+      background-color: #f5f5f5 !important;
+    }
+
+    .tr_off td .done li::before {
+      background-color: #FFF;
+    }
+
+    .tr_off td .done *,
+    .tr_off td strong,
+    .tr_off td a,
+    .tr_off td {
+      color: #FFF !important;
+    }
+
+    .reference {
+      color: #1E1E1E;
+    }
+
+    .modify {
+      color: #FF0004;
+    }
+
+    .new {
+      color: red;
+    }
+
+    .today {
+      color: #0a42e1;
+    }
+
+    .line_bot th,
+    .line_bot td {
+      border-bottom-color: #ddd;
+    }
+
+    .depth0 {
+      font-weight: 600;
+      font-size: 15px;
+      color: #000;
+      text-align: left;
+      background-color: transparent;
+      padding-left: 25px;
+      letter-spacing: 0;
+    }
+
+    .depth1 {
+      font-weight: 600;
+      color: #000;
+    }
+
+    td:nth-child(2) {
+      font-weight: 400;
+      color: #004998;
+    }
+
+    td:nth-child(3) {
+      font-weight: 400;
+      color: #037bff;
+    }
+
+    .goTop {
+      display: block;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 10px 0;
+      text-align: center;
+      color: #000;
+      background-color: #EDEDED;
+    }
+
+    .tr.off,
+    p.off {
+      background-color: #B1B3B9;
+      color: #7B7D86;
+    }
+
+    .done {
+      padding: 5px 0px;
+    }
+
+    .done {
+      padding: 10px 0px;
+      border-top: 1px dotted #bbb;
+    }
+
+    .done li {
+      position: relative;
+      padding-left: 8px;
+      margin-bottom: 6px;
+      line-height: 1.1;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .done li::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 0;
+      width: 3px;
+      height: 3px;
+      border-radius: 100%;
+      background-color: #aaa;
+    }
+
+    .done li:last-child {
+      margin-bottom: 0;
+    }
+
+    .done:first-child {
+      border-top: none;
+    }
+
+    .blind {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      clip: rect(0, 0, 0, 0);
+      overflow: hidden;
+    }
+
+    .tabmenu {
+      display: flex;
+      align-content: center;
+      position: absolute;
+      left: 0;
+      bottom: 0px;
+      list-style: none;
+    }
+
+    .tabmenu>li {
+      margin-left: -1px
+    }
+
+    .tabmenu>li:first-child {
+      margin-left: 0px !important
+    }
+
+    .tabmenu>li>a {
+      display: flex;
+      align-items: center;
+      height: 35px;
+      padding: 0 15px;
+      background-color: #FFF;
+      border: 1px solid #ddd;
+      border-bottom: none !important;
+      border-radius: 8px 8px 0px 0px;
+      font-size: 15px;
+      color: #000;
+      text-decoration: inherit;
+    }
+
+    .tabmenu>li.active {
+      position: relative
+    }
+
+    .tabmenu>li.active>a {
+      background-color: #037bff;
+      border-color: #037bff;
+      color: #FFF
+    }
+
+    .tabmenu-con {
+      display: none;
+    }
+
+    .tabmenu-con.active {
+      display: block;
+    }
+
+    .btnAdmin {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 3px 10px;
+      background-color: #037bff;
+      border-radius: 3px;
+      font-size: 14px;
+      color: #FFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body id="top">
+  <div class="header">
+    <h1>
+      유클래스
+    </h1>
+    <a class="btnAdmin" href="coding_list_admin.html">관리자화면</a>
+    <div class="date">
+      <span class="modify">251102 퍼블리싱 최종본 전달.v.2.0.9</span>
+    </div>
+  </div>
+
+
+  <div class="tableWrap">
+    <table class="tableTh">
+      <colgroup>
+        <col width="10%" />
+        <col width="10%" />
+        <col width="10%" />
+        <col width="10%" />
+        <col width="30%" />
+        <col width="*" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>1depth</th>
+          <th>2depth</th>
+          <th>3depth</th>
+          <th>4depth</th>
+          <th>디렉토리/파일명</th>
+          <th><span>퍼블리셔 코멘트</span></th>
+        </tr>
+      </thead>
+    </table>
+
+    <table class="tableTd">
+      <colgroup>
+        <col width="10%" />
+        <col width="10%" />
+        <col width="10%" />
+        <col width="10%" />
+        <col width="30%" />
+        <col width="*" />
+      </colgroup>
+      <tbody>
+        <tr class="line_bot">
+          <td colspan="6">
+            <ul class="done">
+              <li>BEM 방식으로 코딩</li>
+              <li>css 값은 rem으로 작업</li>
+              <li>modal 사용하는 화면에만 assets/js/modal.js 연결</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="depth1">공통</td>
+          <td>랜딩</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/join/landing.html" target="_blank">uclass/html/join/<strong>landing.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1"></td>
+          <td>내용없음</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/com/c000.html" target="_blank">uclass/html/com/<strong>c000.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>
+                등록된 내용 없을때 화면
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1">로그인</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/join/login.html" target="_blank">uclass/html/join/<strong>login.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td class="depth1">회원가입</td>
+          <td>추가정보 입력</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/join/c002.html" target="_blank">uclass/html/join/<strong>c002.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>
+                가입유형선택 시 필드변경 → 퍼블적용
+              </li>
+              <li>
+                지점선택 모달창 → 퍼블적용
+              </li>
+              <li>.v.2.0.1 input id값 수정</li>
+              <li>.v.2.0.2 지점선택 각 버튼 data-modal-open="modal-branch_숫자" 넘버링 수정 및 모달창 추가 "251023 추가&수정" 주석처리</li>
+              <li>.v.2.0.2 모달창 추가 "251023 추가&수정" 주석처리</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="depth1"></td>
+          <td>승인대기중</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/join/c003.html" target="_blank">uclass/html/join/<strong>c003.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1"></td>
+          <td>이용약관</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/join/c004.html" target="_blank">uclass/html/join/<strong>c004.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1">홈화면</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/home/c001.html" target="_blank">uclass/html/home/<strong>c001.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>.v.2.0.5 차트영역 chart 라이브러리 적용 (파일추가 : chart.js)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>메뉴</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/home/c007.html" target="_blank">uclass/html/home/<strong>c007.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>알림</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/home/c006.html" target="_blank">uclass/html/home/<strong>c006.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1"></td>
+          <td>프로필</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/home/c081.html" target="_blank">uclass/html/home/<strong>c081.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1">공지사항</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/ntc/c010.html" target="_blank">uclass/html/ntc/<strong>c010.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>.v.2.0.3 상단 뒤로가기 버튼 수정</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1"></td>
+          <td>상세</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/ntc/c011.html" target="_blank">uclass/html/ntc/<strong>c011.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1">출결현황</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/att/c012.html" target="_blank">uclass/html/att/<strong>c012.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>
+                날짜선택 모달창 → 퍼블적용
+              </li>
+              <li>.v.2.0.1 캘린더 선택 모달창 스크립트 추가</li>
+              <li>.v.2.0.5 모달창 달력영역 수정, 스크립트 수정 lightpick 라이브러리 적용 (파일추가 : lightpick.js / moment.min.js / lightpick.css)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1">정기일정</td>
+          <td></td>
+          <td> </td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c013.html" target="_blank">uclass/html/sch/<strong>c013.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>.v.2.0.6 탭 구조 마크업 수정 스크립트 추가</li>
+              <li>.v.2.0.8 우측상단 더보기 누락 수정 (상단, 모달창 추가, 스크립트 경로추가)</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>요일설정</td> 
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c014.html" target="_blank">uclass/html/sch/<strong>c014.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li class="modify">.v.2.0.9 스크립트 및 data-att-fields, data-att 수정</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>입력된 상태</td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c014_5.html" target="_blank">uclass/html/sch/<strong>c014_5.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li class="modify">.v.2.0.9 신규 추가 화면</li>
+            </ul>
+          </td>
+        </tr>
+        <!-- <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>지각</td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c014_1.html" target="_blank">uclass/html/sch/<strong>c014_1.html</strong></a>
+          </td>
+          <td rowspan="4">
+            <ul class="done">
+              <li>출결종류 모달창 → 퍼블적용 </li>
+              <li>사유 모달창 → 퍼블적용</li>
+              <li>.v.2.0.2 form.js 스크립트 파일 추가 및 하단 스크립트 수정</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>결석</td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c014_2.html" target="_blank">uclass/html/sch/<strong>c014_2.html</strong></a>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>조퇴</td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c014_3.html" target="_blank">uclass/html/sch/<strong>c014_3.html</strong></a>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>외출</td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c014_4.html" target="_blank">uclass/html/sch/<strong>c014_4.html</strong></a>
+          </td>
+        </tr> -->
+        <tr class="">
+          <td class="depth1"></td>
+          <td>승인요청</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c015.html" target="_blank">uclass/html/sch/<strong>c015.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>더보기 버튼 모달창 → 퍼블적용 </li>
+              <li>불러오기 모달창 → 퍼블적용 </li>
+              <li>삭제 모달창 → 퍼블적용 </li>
+              <li>.v.2.0.6 탭 구조 마크업 수정 스크립트 추가</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1"></td>
+          <td>대기중</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/sch/c016.html" target="_blank">uclass/html/sch/<strong>c016.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>더보기 버튼 모달창 → 퍼블적용 </li>
+              <li>불러오기 모달창 → 퍼블적용 </li>
+              <li>삭제 모달창 → 퍼블적용 </li>
+              <li>.v.2.0.6 탭 구조 마크업 수정 스크립트 추가</li>
+              <li class="modify">.v.2.0.9 관리자, 학부모 승인 완료 추가 작업 * 8월에 적용</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1">상벌점 확인</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/pen/c025.html" target="_blank">uclass/html/pen/<strong>c025.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1">순찰결과</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/pat/c026.html" target="_blank">uclass/html/pat/<strong>c026.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1">출입기록</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/log/c027.html" target="_blank">uclass/html/log/<strong>c027.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1">요청사항</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/req/c029.html" target="_blank">uclass/html/req/<strong>c029.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>
+                상세 모달창 케이스 → 답변완료 퍼블적용
+              </li>
+                <li>.v.2.0.4 모달창 삭제버튼에 "data-modal-close" 추가</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>미확인</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/req/c029_2.html" target="_blank">uclass/html/req/<strong>c029_2.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>확인 답변 대기중</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/req/c029_3.html" target="_blank">uclass/html/req/<strong>c029_3.html</strong></a>
+          </td>
+          <td>
+              <ul class="done">
+                <li>.v.2.0.4 상단 "view__meta" 날짜+시간 추가</li>
+              </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>답변완료</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/req/c029_4.html" target="_blank">uclass/html/req/<strong>c029_4.html</strong></a>
+          </td>
+          <td>
+              <ul class="done">
+                <li>.v.2.0.4 상단 "view__meta" 날짜+시간 추가</li>
+              </ul>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1"></td>
+          <td>작성</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/req/c030.html" target="_blank">uclass/html/req/<strong>c030.html</strong></a>
+          </td>
+          <td>
+              <ul class="done">
+                <li>.v.2.0.5 inline style 태그 삽입</li>
+                <li>.v.2.0.6 height 이슈 css 수정</li>
+              </ul>
+          </td>
+        </tr>
+        <tr class="line_bot">
+          <td class="depth1">DM</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/dm/c032.html" target="_blank">uclass/html/dm/<strong>c032.html</strong></a>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td class="depth1">사유</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c035.html" target="_blank">uclass/html/rea/<strong>c035.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>
+                미승인 모달창 → 퍼블적용
+              </li>
+              <li>
+                학부모 승인 모달창 → 퍼블적용
+              </li>
+              <li>
+                삭제 모달창 → 퍼블적용
+              </li>
+              <li>.v.2.0.6 삭제 모달창 취소/삭제 버튼 data-modal-close 추가</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td>작성</td>
+          <td></td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c034.html" target="_blank">uclass/html/rea/<strong>c034.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li>.v.2.0.7 지각, 결석, 조퇴, 외출 필드 훅</li>
+              <li class="modify">.v.2.0.9 스크립트 및 data-att-fields, data-att 수정</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>입력된 상태</td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c034_5.html" target="_blank">uclass/html/rea/<strong>c034_5.html</strong></a>
+          </td>
+          <td>
+            <ul class="done">
+              <li class="modify">.v.2.0.9 신규 추가 화면</li>
+            </ul>
+          </td>
+        </tr>
+        <!-- <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>지각</td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c034_1.html" target="_blank">uclass/html/rea/<strong>c034_1.html</strong></a>
+          </td>
+          <td rowspan="4">
+            <ul class="done">
+              <li>출결종류 모달창 → 퍼블적용 </li>
+              <li>사유 모달창 → 퍼블적용</li>
+              <li>.v.2.0.2 form.js 스크립트 파일 추가 및 하단 스크립트 수정</li>
+              <li>.v.2.0.6 누락페이지 추가</li>
+              <li>.v.2.0.7 일정필드 셀렉트박스로 수정</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>결석</td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c034_2.html" target="_blank">uclass/html/rea/<strong>c034_2.html</strong></a>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>조퇴</td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c034_3.html" target="_blank">uclass/html/rea/<strong>c034_3.html</strong></a>
+          </td>
+        </tr>
+        <tr class="">
+          <td class="depth1"></td>
+          <td></td>
+          <td>외출</td>
+          <td></td>
+          <td><a href="./uclass/html/rea/c034_4.html" target="_blank">uclass/html/rea/<strong>c034_4.html</strong></a>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#top" class="goTop">TOP</a>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.tableWrap td > a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      window.open(link.href, '', 'scrollbars=yes, top=0, left=0, width=400, height=800');
+    });
+  });
+});
+</script>
+</body>
+
+</html>

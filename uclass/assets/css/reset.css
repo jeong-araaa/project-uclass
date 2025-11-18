@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/**
+ * Jeong A Ra CSS
+ * http://jeongara.com/
+ *
+ * Reset CSS
+ */
+:root {
+  /* 디자인 토큰 */
+  --color-bg: #F2F4F6;
+  --color-line: #E5E5E5;
+  --color-tit: #303030;
+  --color-text: #505050;
+  --color-text-sub: #707070;
+  --color-gray: #909090;
+  --color-dark: #101010;
+  --color-dark2: #1E2124;
+  --color-pri: #0022EE;
+  --color-sec: #3FCDFF;
+  --color-white: #FFF;
+  --color-danger: #FF3F1F;
+}
+*,*::before,*::after {box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html {height:100%;font-size:clamp(8px, 100vw / 37.5, 12px);-webkit-text-size-adjust:100%;}
+body {position:relative;min-height:100vh;font:400 1.7rem/1.5 "Pretendard", system-ui, -apple-system, "맑은 고딕", sans-serif;color:var(--color-text);}
+img,fieldset {border:0;}
+img {vertical-align:top;max-width:100%;}
+em,address {font-style:normal;}
+a {color:inherit;text-decoration:none;}
+table {border-collapse:collapse;}
+strong {font-weight:700;}
+.blind {position:absolute;width:1px;height:1px;clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap;}
