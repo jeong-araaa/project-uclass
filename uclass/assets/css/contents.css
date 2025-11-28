@@ -17,8 +17,8 @@
 
 /* 공지사항 */
 .notice__link {display:grid;row-gap:0.8rem;}
-.notice-link__title {font-size:1.9rem;color:var(--color-dark);line-height:150%;letter-spacing:-0.038rem;}
-.notice-link__desc {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;font-size:1.5rem;color:var(--color-tit);line-height:150%;letter-spacing:-0.03rem;}
+.notice-link__title {font-size:1.9rem;color:var(--color-dark);line-height:150%;letter-spacing:-0.038rem;word-break:break-all;}
+.notice-link__desc {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis;font-size:1.5rem;color:var(--color-tit);line-height:150%;letter-spacing:-0.03rem;word-break:break-all;}
 
 /* 상위 5% */
 .record__inner {display:grid;row-gap:0.8rem;}
