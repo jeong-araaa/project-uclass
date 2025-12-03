@@ -169,6 +169,9 @@ a.menu-item::after {content:'';position:absolute;top:1.2rem;right:0.8rem;width:2
 .profile .card__title {font-size:1.5rem;color:var(--color-text);line-height:2.4rem;}
 .profile .info__row dd {display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:21rem;text-align:right;}
 
+/* 회원탈퇴 */
+.btn-secession {font-weight:600;font-size:1.5rem;text-decoration:underline;}
+
 
 
 /* ================================
